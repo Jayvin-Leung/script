@@ -559,7 +559,7 @@ var BiliService = (function() {
 			let link = '', display = '';
 
 			let ascll = /[\~\`\!\@\#\$\%\^\&\*\(\)\-\_\+\=\{\[\}\]\|\\\:\;\"\'\<\,\>\.\?\/ ]/g;
-			let encode = ($0) => { return encodeURI($0); }
+			let encode = ($0) => { return !['(', ')'].includes($0) ? encodeURI($0) : ($0 == '(' ? '%28' : '%29'); }
 			
 			let wikiLinkReg = { r: /[\#\^\|\\]/g, $: ' ' };
 			let wikiDisplayReg = { r: /(\[\])/g, $: ' $1' };
@@ -569,6 +569,7 @@ var BiliService = (function() {
 			if (setting.isSeparate) {
 				let fileNameReg = { r: /[\#\^\[\]\|\*\"\\\/\<\>\:\?\~]/g, $: ' ' };
 				title = title.replace(fileNameReg.r, fileNameReg.$);
+				title = title.replace(/ +$/g, '');
 				
 				if (setting.isWiki) {
 					link = linkFix + title.replace(wikiLinkReg.r, wikiLinkReg.$);
