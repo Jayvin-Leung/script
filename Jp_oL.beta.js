@@ -307,7 +307,7 @@ var Jp_oL = (function(e, utils) {
 			} else {
 				jcontent = document.createElement("div");
 				jcontent.id = "jcontent";
-				jcontent.setAttribute("style", "height: 435px;padding: 4px;");
+				jcontent.setAttribute("style", "height: 415px;padding: 4px;");
 				parent.appendChild(jcontent);
 			}
 
