@@ -270,9 +270,11 @@ var Ji_iL = (function() {
 	function isOpenNote(isOpenVideo, bvid, bv) {
 		if (!isOpenVideo) return { isOpenNote: false, editor: null };
 		if (bv && bv != bvid) return { isOpenNote: false, editor: null };
-		let editor = document.querySelector(".active-note");
-		editor = editor ? editor.querySelector(".ql-editor") : null;
-		let ion = editor && !editor.classList.contains("ql-blank");
+		//let editor = document.querySelector(".active-note");
+		//editor = editor ? editor.querySelector(".ql-editor") : null;
+		//let ion = editor && !editor.classList.contains("ql-blank");
+		let editor = document.querySelector(".ql-editor");
+		let ion = editor ? true : false;
 		return { isOpenNote: ion, editor: editor };
 	}
 
@@ -967,7 +969,8 @@ var Ji_iL = (function() {
 
 
 		let init = () => {
-			if (!this.editor || this.editor.classList.contains("ql-blank")) return;
+			//if (!this.editor || this.editor.classList.contains("ql-blank")) return;
+			if (!this.editor) return;
 
 			if (!isVaildNode(editor)) return;
 
